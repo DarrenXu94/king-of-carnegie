@@ -18,8 +18,8 @@ const generateQuestions = (kingName) => {
     {
       type: "input",
       name: "date",
-      message: "When did you visit? Leave blank for today.",
-      default: new Date(),
+      message: "When did you visit? (YYYY-MM-DD). Leave blank for today.",
+      default: new Date().toISOString().split("T")[0],
     },
     {
       type: "editor",
@@ -174,19 +174,18 @@ const createMatchupEntry = async (answers, kingName) => {
 
 // if wasItBetter is yes then update the original king defeatedBy column
 const updateOriginalKing = async (answers, name) => {
-  if (answers.wasItBetter === "Yes") {
-    // get id for restaurant
-    const query = await notionApiService.queryDatabase(RESTAURANT_DB_ID, {
-      filter: {
-        property: "Name",
-        rich_text: {
-          equals: name,
-        },
+  // get id for restaurant
+  const query = await notionApiService.queryDatabase(RESTAURANT_DB_ID, {
+    filter: {
+      property: "Name",
+      rich_text: {
+        equals: name,
       },
-    });
+    },
+  });
 
-    const restaurantId = query.data.response.results[0].id;
-
+  const restaurantId = query.data.response.results[0].id;
+  if (answers.wasItBetter === "Yes") {
     // do a put request to update the config
 
     const newConfig = {
@@ -198,6 +197,21 @@ const updateOriginalKing = async (answers, name) => {
             },
           },
         ],
+      },
+    };
+
+    const res = await notionApiService.updateRow(restaurantId, newConfig);
+
+    console.log(res);
+  } else {
+    // update the win counter
+
+    let winCounter = query.data.response.results[0].properties.Wins.number;
+    winCounter++;
+
+    const newConfig = {
+      Wins: {
+        number: winCounter,
       },
     };
 

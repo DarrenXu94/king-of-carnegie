@@ -20,10 +20,6 @@ class NotionApiService {
   }
 
   async queryDatabase(databaseId, opts = {}) {
-    console.log({
-      database_id: databaseId,
-      ...opts,
-    });
     const response = await this.notion.databases.query({
       database_id: databaseId,
       ...opts,
@@ -44,6 +40,24 @@ class NotionApiService {
       statusCode: 200,
 
       data: { response },
+    };
+  }
+
+  async getAllDatabaseIds() {
+    const res = await this.getAllBlogs();
+
+    const log = res.data.response;
+    const databases = log.results.filter(
+      (result) => result.type === "child_database"
+    );
+    const restaurantId = databases[0].id;
+    const metadataId = databases[1].id;
+    const matchupId = databases[2].id;
+
+    return {
+      restaurantId,
+      metadataId,
+      matchupId,
     };
   }
 
