@@ -8,23 +8,21 @@ const notionApiService = new NotionApiService();
 const createMatchupMarkdown = (matchup) => {
   const properties = matchup.properties;
 
-  return `
-  ---
-  title: '${properties.Name.title[0].text.content}'
-  reviewDate: '${matchup.created_time}'
-  winner: '${properties.Winner.rich_text[0].text.content}'
-  ---
+  return `---
+title: '${properties.Name.title[0].text.content}'
+reviewDate: '${matchup.created_time}'
+winner: '${properties.Winner.rich_text[0].text.content}'
+---
     
-  # ${properties.Name.title[0].text.content}
+# ${properties.Name.title[0].text.content}
       
-  ${properties.Description.rich_text[0].text.content}`;
+${properties.Description.rich_text[0].text.content}`;
 };
 
 const createRestaurantMarkdown = (restaurant) => {
   const properties = restaurant.properties;
 
-  return `
----
+  return `---
 title: '${properties.Name.title[0].text.content}'
 reviewDate: '${properties.Date.date.start}'
 wins: ${properties.Wins.number}

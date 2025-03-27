@@ -10,6 +10,6 @@ const matchups = await getCollection("matchups");
   <h1>King of Carnegie</h1>
   <p>Here are the matchups:</p>
   <ul>
-    {matchups.map((matchup) => <li>{matchup.title}</li>)}
+    {matchups.map((matchup) => <li>{matchup.data.title}</li>)}
   </ul>
 </Layout>

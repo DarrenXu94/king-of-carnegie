@@ -4,7 +4,7 @@ const restaurants = defineCollection({
   // Type-check frontmatter using a schema
   schema: z.object({
     title: z.string(),
-    description: z.string(),
+    // description: z.string(),
 
     // Transform string to Date object
     reviewDate: z.coerce.date(),
@@ -18,7 +18,7 @@ const matchups = defineCollection({
   // Type-check frontmatter using a schema
   schema: z.object({
     title: z.string(),
-    description: z.string(),
+    // description: z.string(),
 
     // Transform string to Date object
     reviewDate: z.coerce.date(),
