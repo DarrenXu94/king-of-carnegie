@@ -1,0 +1,19 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("restaurants");
+
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: post,
+  }));
+}
+type Props = CollectionEntry<"restaurants">;
+
+const post = Astro.props;
+
+const splitContent = post.body.split("\n");
+---
+
+{splitContent.map((content) => <p>{content}</p>)}

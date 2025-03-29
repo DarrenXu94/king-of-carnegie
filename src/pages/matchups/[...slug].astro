@@ -13,6 +13,18 @@ type Props = CollectionEntry<"matchups">;
 const post = Astro.props;
 
 const splitContent = post.body.split("\n");
+
+// import { toKebabCase } from "../../../scripts/helpers";
+
+// const helpers = await import("../../../scripts/helpers.js");
+
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
+const helpers = require("../../../scripts/helpers.js");
 ---
+
+<a href={`/restaurants/${helpers.toKebabCase(post.data.winner)}/`}>
+  {post.data.winner}
+</a>
 
 {splitContent.map((content) => <p>{content}</p>)}
