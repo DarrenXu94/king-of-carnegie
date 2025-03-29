@@ -3,13 +3,23 @@ import { getCollection } from "astro:content";
 
 import Layout from "../layouts/Layout.astro";
 
+import { metadata } from "../consts";
+
 const matchups = await getCollection("matchups");
+
+console.log(metadata);
 ---
 
 <Layout>
-  <h1>King of Carnegie</h1>
+  <h1>Current King of Carnegie: {metadata.kingName}</h1>
   <p>Here are the matchups:</p>
   <ul>
-    {matchups.map((matchup) => <li>{matchup.data.title}</li>)}
+    {
+      matchups.map((matchup) => (
+        <li>
+          <a href={`/matchups/${matchup.slug}/`}>{matchup.data.title}</a>
+        </li>
+      ))
+    }
   </ul>
 </Layout>
