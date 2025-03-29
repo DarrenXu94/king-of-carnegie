@@ -160,6 +160,15 @@ const createMatchupEntry = async (answers, kingName) => {
           },
         ],
       },
+      Loser: {
+        rich_text: [
+          {
+            text: {
+              content: answers.wasItBetter === "Yes" ? kingName : answers.name,
+            },
+          },
+        ],
+      },
     },
   };
 

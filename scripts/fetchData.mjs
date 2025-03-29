@@ -12,6 +12,7 @@ const createMatchupMarkdown = (matchup) => {
 title: '${properties.Name.title[0].text.content}'
 reviewDate: '${matchup.created_time}'
 winner: '${properties.Winner.rich_text[0].text.content}'
+loser: '${properties.Loser.rich_text[0].text.content}'
 ---
     
 # ${properties.Name.title[0].text.content}

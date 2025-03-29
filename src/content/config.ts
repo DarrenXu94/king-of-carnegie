@@ -23,6 +23,7 @@ const matchups = defineCollection({
     // Transform string to Date object
     reviewDate: z.coerce.date(),
     winner: z.string(),
+    loser: z.string(),
   }),
 });
 
