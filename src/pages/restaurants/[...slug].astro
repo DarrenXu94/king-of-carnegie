@@ -1,5 +1,5 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content";
+import { type CollectionEntry, getCollection, render } from "astro:content";
 
 export async function getStaticPaths() {
   const posts = await getCollection("restaurants");
@@ -13,7 +13,8 @@ type Props = CollectionEntry<"restaurants">;
 
 const post = Astro.props;
 
-const splitContent = post.body.split("\n");
+const { Content } = await render(post);
 ---
 
-{splitContent.map((content) => <p>{content}</p>)}
+<!-- {splitContent.map((content) => <p>{content}</p>)} -->
+<Content />

@@ -1,5 +1,5 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content";
+import { type CollectionEntry, getCollection, render } from "astro:content";
 
 export async function getStaticPaths() {
   const posts = await getCollection("matchups");
@@ -12,11 +12,11 @@ type Props = CollectionEntry<"matchups">;
 
 const post = Astro.props;
 
-const splitContent = post.body.split("\n");
-
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 const helpers = require("../../../scripts/helpers.js");
+
+const { Content } = await render(post);
 ---
 
 <a href={`/restaurants/${helpers.toKebabCase(post.data.winner)}/`}>
@@ -27,4 +27,4 @@ const helpers = require("../../../scripts/helpers.js");
   {post.data.loser}
 </a>
 
-{splitContent.map((content) => <p>{content}</p>)}
+<Content />
