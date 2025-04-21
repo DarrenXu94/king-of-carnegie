@@ -7,9 +7,9 @@ const currentYear = new Date().getFullYear();
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" />
     <meta name="generator" content={Astro.generator} />
-    <title>Astro Basics</title>
+    <title>King of Carnegie</title>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Fredoka&family=Luckiest+Guy&display=swap");
 
@@ -34,7 +34,6 @@ const currentYear = new Date().getFullYear();
         font-family: "Luckiest Guy", cursive;
         font-size: 3rem;
         text-shadow: 2px 2px #660000;
-        border-bottom: 5px solid white;
       }
 
       header a {
@@ -72,6 +71,9 @@ const currentYear = new Date().getFullYear();
       <slot />
     </main>
   </body>
+
+  <div class="checkerboard"></div>
+
   <footer>
     © {currentYear} King of Carnegie
   </footer>
