@@ -5,7 +5,21 @@ import Layout from "../layouts/Layout.astro";
 
 import { metadata } from "../consts";
 
+import { dateToHuman } from "../utils/date";
+
 const matchups = await getCollection("matchups");
+
+// title has x vs y, change it so it renders on multiple lines with string
+const formatTitle = (title: string) => {
+  const [first, second] = title.split(" vs ");
+  return `<span>
+      <span>${first}</span>
+			<br />
+			vs
+      <br />
+      <span>${second}</span>
+    </span>`;
+};
 ---
 
 <style>
@@ -23,16 +37,34 @@ const matchups = await getCollection("matchups");
     color: #d90429;
     font-weight: bold;
   }
+
+  .blog-post p {
+    color: #666;
+  }
+
+  h1 span {
+    font-size: 2.5rem;
+    color: #d90429;
+  }
 </style>
 <Layout>
-  <h1>👑 Current King of Carnegie: {metadata.kingName}</h1>
-  <p>Here are the matchups:</p>
+  <h1>
+    👑 Current King of Carnegie 👑
+    <br />
+    <span>
+      {metadata.kingName}
+    </span>
+  </h1>
+  <p>Previous matchups:</p>
   <ul>
     {
       matchups.map((matchup) => (
         <li class="blog-post">
           <a href={`/matchups/${matchup.slug}/`}>
-            <h2>{matchup.data.title}</h2>
+            <h2>
+              <Fragment set:html={formatTitle(matchup.data.title)} />
+            </h2>
+            <p>{dateToHuman(matchup.data.reviewDate)}</p>
           </a>
         </li>
       ))

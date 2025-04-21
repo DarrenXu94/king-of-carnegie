@@ -21,13 +21,59 @@ const { Content } = await render(post);
 ---
 
 <Layout>
-  <a href={`/restaurants/${helpers.toKebabCase(post.data.winner)}/`}>
-    {post.data.winner}
-  </a>
+  <div>
+    <Content />
+  </div>
 
-  <a href={`/restaurants/${helpers.toKebabCase(post.data.loser)}/`}>
-    {post.data.loser}
-  </a>
+  <ul>
+    <li>
+      <a
+        class="blog-post winner"
+        href={`/restaurants/${helpers.toKebabCase(post.data.winner)}/`}
+      >
+        🎉 {post.data.winner} 🎉
+      </a>
+    </li>
 
-  <Content />
+    <li>
+      <a
+        class="blog-post loser"
+        href={`/restaurants/${helpers.toKebabCase(post.data.loser)}/`}
+      >
+        {post.data.loser}
+      </a>
+    </li>
+  </ul>
 </Layout>
+<style>
+  ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 5rem;
+    display: flex;
+    gap: 2rem;
+  }
+  .blog-post {
+    background: white;
+    border: 6px double #d90429;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+  }
+
+  .blog-post {
+    text-decoration: none;
+    color: #d90429;
+    font-weight: bold;
+  }
+  .loser {
+    border-color: #666;
+    color: #666;
+  }
+
+  .blog-post p {
+    color: #666;
+    margin-top: 0;
+  }
+</style>
