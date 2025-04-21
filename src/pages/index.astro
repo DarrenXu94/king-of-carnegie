@@ -23,26 +23,29 @@ const formatTitle = (title: string) => {
 ---
 
 <style>
-  .blog-post {
+  .blog-post-container {
     background: white;
-    border: 6px double #d90429;
-    padding: 2rem;
+    border: 6px solid #d90429;
     margin-bottom: 2rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 10px 10px 0px rgba(0, 0, 0, 1);
     border-radius: 12px;
   }
 
-  .blog-post a {
+  .blog-post {
     text-decoration: none;
     color: #d90429;
     font-weight: bold;
+  }
+
+  .padding {
+    padding: 2rem;
   }
 
   .blog-post p {
     color: #666;
   }
 
-  h1 span {
+  h1 .king-name {
     font-size: 2.5rem;
     color: #d90429;
   }
@@ -51,7 +54,7 @@ const formatTitle = (title: string) => {
   <h1>
     👑 Current King of Carnegie 👑
     <br />
-    <span>
+    <span class="king-name">
       {metadata.kingName}
     </span>
   </h1>
@@ -59,12 +62,14 @@ const formatTitle = (title: string) => {
   <ul>
     {
       matchups.map((matchup) => (
-        <li class="blog-post">
-          <a href={`/matchups/${matchup.slug}/`}>
-            <h2>
-              <Fragment set:html={formatTitle(matchup.data.title)} />
-            </h2>
-            <p>{dateToHuman(matchup.data.reviewDate)}</p>
+        <li class="blog-post-container">
+          <a class="blog-post" href={`/matchups/${matchup.slug}/`}>
+            <div class="padding">
+              <h2>
+                <Fragment set:html={formatTitle(matchup.data.title)} />
+              </h2>
+              <p>{dateToHuman(matchup.data.reviewDate)}</p>
+            </div>
           </a>
         </li>
       ))
