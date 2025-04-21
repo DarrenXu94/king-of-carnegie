@@ -1,22 +1,89 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro Basics</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Fredoka&family=Luckiest+Guy&display=swap");
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+      html,
+      body {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+        color: #222;
+        font-family: "Fredoka", sans-serif;
+
+        display: flex;
+        flex-direction: column;
+      }
+
+      header {
+        background-color: #d90429;
+        color: white;
+        padding: 2rem 1rem;
+        text-align: center;
+        font-family: "Luckiest Guy", cursive;
+        font-size: 3rem;
+        text-shadow: 2px 2px #660000;
+        border-bottom: 5px solid white;
+      }
+
+      header a {
+        text-decoration: none;
+        color: white;
+      }
+
+      .checkerboard {
+        background: repeating-linear-gradient(
+          45deg,
+          #fff,
+          #fff 10px,
+          #d90429 10px,
+          #d90429 20px
+        );
+        height: 20px;
+      }
+
+      footer {
+        text-align: center;
+        padding: 1rem;
+        background-color: #d90429;
+        color: white;
+        font-size: 0.9rem;
+      }
+    </style>
+  </head>
+  <header>
+    <a href="/"> King of Carnegie </a>
+  </header>
+  <div class="checkerboard"></div>
+
+  <body>
+    <main>
+      <slot />
+    </main>
+  </body>
+  <footer>
+    © {currentYear} King of Carnegie
+  </footer>
+
+  <style is:global>
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      flex: 1;
+    }
+  </style>
+
+
+</html>

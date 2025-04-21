@@ -6,20 +6,42 @@ import Layout from "../layouts/Layout.astro";
 import { metadata } from "../consts";
 
 const matchups = await getCollection("matchups");
-
-console.log(metadata);
 ---
 
+<style>
+  .blog-post {
+    background: white;
+    border: 6px double #d90429;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+  }
+
+  .blog-post a {
+    text-decoration: none;
+    color: #d90429;
+    font-weight: bold;
+  }
+</style>
 <Layout>
   <h1>Current King of Carnegie: {metadata.kingName}</h1>
   <p>Here are the matchups:</p>
   <ul>
     {
       matchups.map((matchup) => (
-        <li>
-          <a href={`/matchups/${matchup.slug}/`}>{matchup.data.title}</a>
+        <li class="blog-post">
+          <a href={`/matchups/${matchup.slug}/`}>
+            <h2>{matchup.data.title}</h2>
+          </a>
         </li>
       ))
     }
   </ul>
 </Layout>
+<style is:global>
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+</style>

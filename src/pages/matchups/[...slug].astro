@@ -1,5 +1,6 @@
 ---
 import { type CollectionEntry, getCollection, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("matchups");
@@ -19,12 +20,14 @@ const helpers = require("../../../scripts/helpers.js");
 const { Content } = await render(post);
 ---
 
-<a href={`/restaurants/${helpers.toKebabCase(post.data.winner)}/`}>
-  {post.data.winner}
-</a>
+<Layout>
+  <a href={`/restaurants/${helpers.toKebabCase(post.data.winner)}/`}>
+    {post.data.winner}
+  </a>
 
-<a href={`/restaurants/${helpers.toKebabCase(post.data.loser)}/`}>
-  {post.data.loser}
-</a>
+  <a href={`/restaurants/${helpers.toKebabCase(post.data.loser)}/`}>
+    {post.data.loser}
+  </a>
 
-<Content />
+  <Content />
+</Layout>
