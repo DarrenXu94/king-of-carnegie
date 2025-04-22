@@ -13,6 +13,24 @@ const currentYear = new Date().getFullYear();
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Fredoka&family=Luckiest+Guy&display=swap");
 
+      :root {
+        --font-size-heading: 1.5rem;
+      }
+
+      /* Medium screens (e.g., tablets) */
+      @media (min-width: 600px) {
+        :root {
+          --font-size-heading: 2rem;
+        }
+      }
+
+      /* Large screens (e.g., desktops) */
+      @media (min-width: 900px) {
+        :root {
+          --font-size-heading: 2.5rem;
+        }
+      }
+
       html,
       body {
         margin: 0;
@@ -38,7 +56,7 @@ const currentYear = new Date().getFullYear();
         padding: 2rem 1rem;
         text-align: center;
         font-family: "Luckiest Guy", cursive;
-        font-size: 3rem;
+        font-size: var(--font-size-heading);
         text-shadow: 2px 2px #660000;
       }
 
