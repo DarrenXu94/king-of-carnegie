@@ -21,9 +21,15 @@ const currentYear = new Date().getFullYear();
         background-color: #fff;
         color: #222;
         font-family: "Fredoka", sans-serif;
+      }
 
-        display: flex;
-        flex-direction: column;
+      // only add display flex on tablet and above
+			@media (min-width: 768px) {
+        html,
+        body {
+          display: flex;
+          flex-direction: column;
+        }
       }
 
       header {
