@@ -20,6 +20,11 @@ const formatTitle = (title: string) => {
       <span>${second}</span>
     </span>`;
 };
+import { createRequire } from "module";
+
+const require = createRequire(import.meta.url);
+
+const helpers = require("../../scripts/helpers.js");
 ---
 
 <style>
@@ -49,14 +54,20 @@ const formatTitle = (title: string) => {
     font-size: 2.5rem;
     color: #d90429;
   }
+
+  h1 a {
+    text-decoration: none;
+  }
 </style>
 <Layout>
   <h1>
     👑 Current King of Carnegie 👑
     <br />
-    <span class="king-name">
-      {metadata.kingName}
-    </span>
+    <a href={`/restaurants/${helpers.toKebabCase(metadata.kingName)}/`}>
+      <span class="king-name">
+        {metadata.kingName}
+      </span>
+    </a>
   </h1>
   <p>Previous matchups:</p>
   <ul>
