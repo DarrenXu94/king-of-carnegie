@@ -7,4 +7,4 @@ loser: 'SinJeon K-Street Food Carnegie'
     
 # SinJeon K-Street Food Carnegie vs Ramen and Dumpling house Carnegie
       
-K-Street was very mid
+Very easy win to Ramen and Dumpling house. SinJeon was not even in the same league.
