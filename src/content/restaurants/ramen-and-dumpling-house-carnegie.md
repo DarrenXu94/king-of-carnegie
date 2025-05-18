@@ -1,8 +1,8 @@
 ---
 title: 'Ramen and Dumpling house Carnegie'
 reviewDate: '2025-03-13'
-wins: 1
-defeatedBy: 'null'
+wins: 2
+defeatedBy: 'Hankki'
 ---
   
 # Ramen and Dumpling house Carnegie

@@ -1,1 +1,1 @@
-export const metadata = {"kingName":"Ramen and Dumpling house Carnegie"}
+export const metadata = {"kingName":"Hankki"}
