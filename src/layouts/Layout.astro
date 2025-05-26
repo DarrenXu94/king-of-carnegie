@@ -1,5 +1,6 @@
 ---
 const currentYear = new Date().getFullYear();
+import "../styles/main.scss";
 ---
 
 <!doctype html>
@@ -104,12 +105,22 @@ const currentYear = new Date().getFullYear();
     © {currentYear} King of Carnegie
   </footer>
 
-  <style is:global>
+  <style is:global lang="scss">
+    @import "../styles/main.scss";
+
     main {
-      max-width: 800px;
+      max-width: 600px;
       margin: 2rem auto;
       padding: 0 1rem;
       flex: 1;
+
+      @include tablet {
+        max-width: 800px;
+      }
+
+      @include desktop {
+        max-width: 1200px;
+      }
     }
   </style>
 
