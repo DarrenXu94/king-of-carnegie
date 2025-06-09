@@ -28,23 +28,15 @@ const helpers = require("../../scripts/helpers.js");
 ---
 
 <style>
-  .blog-post-container {
-    background: white;
-    border: 6px solid #d90429;
-    margin-bottom: 2rem;
-    box-shadow: 10px 10px 0px rgba(0, 0, 0, 1);
-    border-radius: 12px;
-  }
-
   .blog-post {
     text-decoration: none;
     color: #d90429;
     font-weight: bold;
   }
 
-  .padding {
+  /* .padding {
     padding: 2rem;
-  }
+  } */
 
   .blog-post p {
     color: #666;
@@ -108,6 +100,32 @@ const helpers = require("../../scripts/helpers.js");
 
     @include desktop {
       grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+
+  .padding {
+    padding: 1rem;
+    @include tablet {
+      padding: 2rem;
+    }
+  }
+
+  h2 {
+    font-size: 1.2rem;
+    @include tablet {
+      font-size: 1.5rem;
+    }
+  }
+
+  .blog-post-container {
+    background: white;
+    border: 6px solid #d90429;
+    box-shadow: 10px 10px 0px rgba(0, 0, 0, 1);
+    border-radius: 12px;
+    margin-bottom: 0.75rem;
+
+    @include tablet {
+      margin-bottom: 2rem;
     }
   }
 </style>
